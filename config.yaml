@@ -1,0 +1,26 @@
+esphome:
+  name: bt-prank-speaker
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+  ssid: "YOUR_WIFI"
+  password: "YOUR_WIFI_PASS"
+
+bluetooth_proxy:
+  active: true
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 1100ms
+    window: 1100ms
+
+media_player:
+  - platform: bluetooth_proxy
+    id: bt_proxy
+    mac_address: AA:BB:CC:DD:EE:FF  # Ganti dengan MAC speaker target
+
+api:
+  encryption:
+    key: "generate_with_esphome wizard"
